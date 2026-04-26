@@ -438,8 +438,7 @@ function pgHome() {
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <blockquote>"Teaching here is truly fulfilling. The management invests in staff development and the students are brilliant and motivated every day."</blockquote>
-        <div class="testimonial-avatar" style="background:#c89b2a;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:0.85rem;margin-bottom:8px">NO</div>
-        <div class="testimonial-author">
+          <div class="testimonial-author">
           <div class="testimonial-avatar" style="background:#c89b2a">NO</div>
           <div><div class="name">Mrs. Ngozi Okonkwo</div><div class="role">Mathematics Teacher</div></div>
         </div>
