@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Greenfield Academy — Excellence in Secondary Education</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Google Fonts: Playfair Display for headings, DM Sans for body -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
@@ -14,11 +13,9 @@
 
 <body>
 
-  <!-- ======== PUBLIC NAVIGATION BAR ======== -->
+  <!-- PUBLIC NAVBAR -->
   <nav id="publicNav" class="navbar">
     <div class="nav-container">
-
-      <!-- Brand / Logo -->
       <a href="#" class="nav-brand" onclick="navigate('home')">
         <div class="brand-logo">
           <svg viewBox="0 0 40 40" fill="none" width="38" height="38">
@@ -31,8 +28,6 @@
         </div>
         <span>Greenfield Academy</span>
       </a>
-
-      <!-- Desktop Nav Links -->
       <div class="nav-links" id="navLinks">
         <a href="#" onclick="navigate('home')" class="nav-link active" data-nav="home">Home</a>
         <a href="#" onclick="navigate('about')" class="nav-link" data-nav="about">About</a>
@@ -40,8 +35,6 @@
         <a href="#" onclick="navigate('news')" class="nav-link" data-nav="news">News</a>
         <a href="#" onclick="navigate('contact')" class="nav-link" data-nav="contact">Contact</a>
       </div>
-
-      <!-- Action Buttons + Hamburger -->
       <div class="nav-actions">
         <button class="btn btn-ghost btn-sm" onclick="navigate('login')">Sign In</button>
         <button class="btn btn-primary btn-sm" onclick="navigate('signup')">Get Started</button>
@@ -50,29 +43,29 @@
         </button>
       </div>
     </div>
-
-    <!-- Mobile Slide-out Menu -->
+    <!-- Mobile drawer -->
     <div class="mobile-menu" id="mobileMenu">
+      <button class="mobile-close" onclick="closeMobile()">✕</button>
       <a href="#" onclick="navigate('home');    closeMobile()">Home</a>
       <a href="#" onclick="navigate('about');   closeMobile()">About</a>
       <a href="#" onclick="navigate('programs');closeMobile()">Programmes</a>
       <a href="#" onclick="navigate('news');    closeMobile()">News</a>
       <a href="#" onclick="navigate('contact'); closeMobile()">Contact</a>
       <div class="mobile-auth">
-        <button class="btn btn-ghost btn-sm btn-outline-white" onclick="navigate('login'); closeMobile()">Sign
-          In</button>
+        <button class="btn btn-outline-white btn-sm" onclick="navigate('login'); closeMobile()">Sign In</button>
         <button class="btn btn-primary btn-sm" onclick="navigate('signup');closeMobile()">Get Started</button>
       </div>
     </div>
+    <div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMobile()"></div>
   </nav>
 
-  <!-- ======== MAIN PAGE CONTENT (rendered by JS) ======== -->
+  <!-- MAIN PAGE VIEW -->
   <div id="pageView"></div>
 
-  <!-- ======== TOAST NOTIFICATIONS ======== -->
+  <!-- TOAST NOTIFICATIONS -->
   <div id="toastContainer" class="toast-container"></div>
 
-  <!-- ======== MODAL (Add / Edit forms) ======== -->
+  <!-- MODAL (Add / Edit forms) -->
   <div id="modalOverlay" class="modal-overlay hidden" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()" id="modalBox">
       <div class="modal-header">
@@ -83,7 +76,7 @@
     </div>
   </div>
 
-  <!-- ======== CONFIRM DIALOG (Delete prompts) ======== -->
+  <!-- CONFIRM DIALOG -->
   <div id="confirmOverlay" class="modal-overlay hidden">
     <div class="modal modal-sm">
       <div class="modal-header">
@@ -91,7 +84,7 @@
         <button class="modal-close" onclick="closeConfirm()">&times;</button>
       </div>
       <div class="modal-body">
-        <p id="confirmMsg"></p>
+        <p id="confirmMsg" style="margin-bottom:20px;color:var(--gray-600);font-size:0.9rem"></p>
         <div class="modal-actions">
           <button class="btn btn-ghost" onclick="closeConfirm()">Cancel</button>
           <button class="btn btn-danger" id="confirmBtn">Confirm</button>
@@ -100,9 +93,7 @@
     </div>
   </div>
 
-  <!-- ======== APPLICATION LOGIC ======== -->
   <script src="app.js"></script>
-
 </body>
 
 </html>
