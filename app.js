@@ -926,7 +926,7 @@ function renderDashboard() {
       <div class="dash-topbar-left">
         <!-- Mobile hamburger (hidden on desktop) -->
         <button class="btn-icon dash-btn" onclick="toggleDashSidebar()" id="dashHamburger" style="display:none">☰</button>
-        <div class="dash-search"><span>🔍</span><input type="text" placeholder="Search students, teachers..."></div>
+       
       </div>
       <div class="dash-topbar-right">
         <button class="dash-btn" title="Notifications">🔔<span class="notif-badge">3</span></button>
