@@ -956,7 +956,24 @@ function toggleDashSidebar() { $('dashSidebar').classList.toggle('mobile-open') 
 /* Refresh only the content area */
 function refreshDash() {
   const dc = $('dashContent');
-  if (dc) dc.innerHTML = renderDashPage();
+  if (!dc) return;
+
+  const active   = document.activeElement;
+  const hadFocus = active && dc.contains(active) && active.id;
+  const selStart = hadFocus ? active.selectionStart : null;
+  const selEnd   = hadFocus ? active.selectionEnd   : null;
+  const focusId  = hadFocus ? active.id : null;
+
+  dc.innerHTML = renderDashPage();
+
+  if (focusId) {
+    const restored = document.getElementById(focusId);
+    if (restored) {
+      restored.focus();
+      if (selStart !== null) restored.setSelectionRange(selStart, selEnd);
+    }
+  }
+
   if (dashPage === 'dashboard') setTimeout(initBarChart, 50);
 }
 
@@ -1099,7 +1116,7 @@ function dashStudents() {
     <div class="tbl-toolbar-left">
       <div class="tbl-search">
         <span>🔍</span>
-        <input placeholder="Search student name..." value="${sFilter}" oninput="sFilter=this.value;sPage=1;refreshDash()">
+        <input id="dashSearchInput" placeholder="Search student name..." value="${sFilter}" oninput="sFilter=this.value;sPage=1;refreshDash()">
       </div>
       <select onchange="sGrade=this.value;sPage=1;refreshDash()">
         <option value="">All Levels</option>
@@ -1238,8 +1255,8 @@ function dashTeachers() {
     <div class="tbl-toolbar-left">
       <div class="tbl-search">
         <span>🔍</span>
-        <input placeholder="Search by name or subject..." value="${tFilter}" oninput="tFilter=this.value;refreshDash()">
-      </div>
+        <input id="dashSearchInput" placeholder="Search by name or subject..." value="${tFilter}" oninput="tFilter=this.value;refreshDash()">
+        </div>
     </div>
   </div>
   <div style="overflow-x:auto"><table>
@@ -1529,7 +1546,7 @@ function dashGrades() {
     <div class="tbl-toolbar-left">
       <div class="tbl-search">
         <span>🔍</span>
-        <input placeholder="Search by student or subject..." value="${gFilter}" oninput="gFilter=this.value;refreshDash()">
+        <input id="dashSearchInput" placeholder="Search by student or subject..." value="${gFilter}" oninput="gFilter=this.value;refreshDash()">
       </div>
     </div>
   </div>
